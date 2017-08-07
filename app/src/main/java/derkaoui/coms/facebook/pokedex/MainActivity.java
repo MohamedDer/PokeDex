@@ -27,19 +27,16 @@ public class MainActivity extends AppCompatActivity {
         pokees = new ArrayList<Pokemon>();
         PokeApi pokeApi = new PokeApiClient();
 
-
         for (int i=1; i<10;i++){
-            pokees.add(new Pokemon(i,pokeApi.getPokemonSpecies(i).getName(), "dd ", "http://www.pokepedia.fr/images/thumb/a/a0/Pikachu_SSB4.png/300px-Pikachu_SSB4.png" ));
+            pokees.add(new Pokemon(i,pokeApi.getPokemonSpecies(i).getName(), pokeApi.getPokemonSpecies(i).getFlavorTextEntries().toString(), "http://www.pokepedia.fr/images/thumb/a/a0/Pikachu_SSB4.png/300px-Pikachu_SSB4.png" ));
             Log.d(" pokemon added ", pokees.get(i-1).getName());
-        }
 
+
+        }
 
         GridView grid = (GridView) findViewById(R.id.grid);
         GridAdapter gAdapter = new GridAdapter(this,pokees);
         grid.setAdapter(gAdapter);
-
-
-        Log.d("poke to string"," " );
 
     }
 }
